@@ -24,7 +24,7 @@ namespace OOP
         private Reward _rewards; // reward object
         private Creatures.Creatures creature;
         private Combat combatMode;
-        public static readonly int BONUS_ARMOR_CONSTANT = 2;
+        private readonly int BONUS_ARMOR_CONSTANT = 2;
 
         public ClickAdventureBase()
 
@@ -63,23 +63,23 @@ namespace OOP
         
         //Walkbutton
         private void button1_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(positionWalked);
-            int questHack = positionWalked - 1;
+        {            
+            //int questHack = positionWalked - 1;
             combatLabel.Text = "";
-        // questGiver;
-        // questText;
-        // questName;
-        // questId;
+            // questGiver;
+            // questText;
+            // questName;
+            // questId;
 
             lblWalk.Text = "You moved to position: " + ++positionWalked;
+            Console.WriteLine(positionWalked);
             //if (questHack < Quest.quests.Count)
             //{
             //    mainTextBox.Text = Quest.quests[questHack].questText;
             //}
-            
-            
-                if (positionWalked % 4 == 0)
+
+
+            if (positionWalked % 4 == 0)
                 {
                     creature = new EasyMonster();
                     combatMode = new Combat(creature, _player, BONUS_ARMOR_CONSTANT);
