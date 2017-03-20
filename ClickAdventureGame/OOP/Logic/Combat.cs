@@ -10,6 +10,7 @@ namespace OOP.Logic
     {
         private Player.Player player;
         private Creatures.Creatures creature;
+        private int bonusArmor;
 
         public void setPlayer(Player.Player p)            
         {
@@ -34,14 +35,15 @@ namespace OOP.Logic
 
         public void Defend()
         {
-            int attackDamage = this.creature.AttackDamage - (this.player.Armor + 2) > 0 ? this.creature.AttackDamage - (this.player.Armor + 2 ) : 0;
+            int attackDamage = this.creature.AttackDamage - (this.player.Armor + this.bonusArmor) > 0 ? this.creature.AttackDamage - (this.player.Armor + this.bonusArmor) : 0;
             this.player.CurrentHitPoints -= attackDamage;
         }
 
-        public Combat(Creatures.Creatures c, Player.Player p)
+        public Combat(Creatures.Creatures c, Player.Player p, int ba)
         {
             this.creature = c;
             this.player = p;
+            this.bonusArmor = ba;
             
         }
         public Combat()

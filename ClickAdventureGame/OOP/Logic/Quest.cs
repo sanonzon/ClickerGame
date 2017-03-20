@@ -19,8 +19,9 @@ namespace OOP.Logic
             //questGiver = this.questGiver;
             //questText = this.questText;
             //quests = this.quests;
+            InitQuests();
         }
-        public Quest(int id, string qn, string qg, string qt)
+        private Quest(int id, string qn, string qg, string qt)
         {
             this.questId = id;
             this.questName = qn;
@@ -29,7 +30,7 @@ namespace OOP.Logic
         }
 
 
-        public void InitQuests()
+        private void InitQuests()
         {
             quests.Add(new Quest(1, "Ugly Ogre, KILL!", "Bengt", "Kill the ogre named Berit!"));
             quests.Add(new Quest(2, "Evil necromancer", "Bengt", "The ogre named Berit has ressurected!! Kill the necromancer named Kalle!"));
@@ -40,13 +41,6 @@ namespace OOP.Logic
         //public static void adventureQuests(List<string> quests)
         public static void adventureQuests()
         {
-            /*
-            quests.Add("Quest 1");
-            quests.Add("Quest 2");
-            quests.Add("Quest 3");
-            quests.Add("Quest 4");
-            quests.Add("Quest 5");
-            */
             if (quests != null)
             {
                 for (int i = 0; i < quests.Count; i++)

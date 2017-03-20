@@ -8,9 +8,6 @@ namespace OOP.Creatures
 {
     class Creatures : ICreatures
     {
-
-
-
         public int HealthPoints
         {
             get;

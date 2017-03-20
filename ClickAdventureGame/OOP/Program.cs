@@ -14,10 +14,10 @@ namespace OOP
         [STAThread]
         static void Main()
         {
-            Logic.Quest quests = new Logic.Quest();
-            quests.InitQuests();
+            //Logic.Quest quests = new Logic.Quest();
+//            quests.InitQuests();
 
-            Logic.Quest.adventureQuests();
+           // Logic.Quest.adventureQuests();
 
             
             Application.EnableVisualStyles();
