@@ -44,6 +44,13 @@
             this.attackButton = new System.Windows.Forms.Button();
             this.defendButton = new System.Windows.Forms.Button();
             this.combatLabel = new System.Windows.Forms.Label();
+            this.lblMonsterDialogue = new System.Windows.Forms.Label();
+            this.lblMonsterDamage = new System.Windows.Forms.Label();
+            this.lblMonsterHealthPoints = new System.Windows.Forms.Label();
+            this.lblMonsterArmor = new System.Windows.Forms.Label();
+            this.lblValueMonsterHealthPoints = new System.Windows.Forms.Label();
+            this.lblValueMonsterAttackDamage = new System.Windows.Forms.Label();
+            this.lblValueMonsterArmor = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,7 +166,7 @@
             // mainTextBox
             // 
             this.mainTextBox.AutoSize = true;
-            this.mainTextBox.Location = new System.Drawing.Point(290, 143);
+            this.mainTextBox.Location = new System.Drawing.Point(286, 222);
             this.mainTextBox.Name = "mainTextBox";
             this.mainTextBox.Size = new System.Drawing.Size(52, 13);
             this.mainTextBox.TabIndex = 12;
@@ -195,11 +202,88 @@
             this.combatLabel.Size = new System.Drawing.Size(0, 13);
             this.combatLabel.TabIndex = 15;
             // 
+            // lblMonsterDialogue
+            // 
+            this.lblMonsterDialogue.AutoSize = true;
+            this.lblMonsterDialogue.Location = new System.Drawing.Point(331, 114);
+            this.lblMonsterDialogue.Name = "lblMonsterDialogue";
+            this.lblMonsterDialogue.Size = new System.Drawing.Size(75, 13);
+            this.lblMonsterDialogue.TabIndex = 16;
+            this.lblMonsterDialogue.Text = "MonsterDialog";
+            this.lblMonsterDialogue.Visible = false;
+            // 
+            // lblMonsterDamage
+            // 
+            this.lblMonsterDamage.AutoSize = true;
+            this.lblMonsterDamage.Location = new System.Drawing.Point(331, 175);
+            this.lblMonsterDamage.Name = "lblMonsterDamage";
+            this.lblMonsterDamage.Size = new System.Drawing.Size(88, 13);
+            this.lblMonsterDamage.TabIndex = 16;
+            this.lblMonsterDamage.Text = "Monster Damage";
+            this.lblMonsterDamage.Visible = false;
+            // 
+            // lblMonsterHealthPoints
+            // 
+            this.lblMonsterHealthPoints.AutoSize = true;
+            this.lblMonsterHealthPoints.Location = new System.Drawing.Point(331, 143);
+            this.lblMonsterHealthPoints.Name = "lblMonsterHealthPoints";
+            this.lblMonsterHealthPoints.Size = new System.Drawing.Size(66, 13);
+            this.lblMonsterHealthPoints.TabIndex = 16;
+            this.lblMonsterHealthPoints.Text = "Monster HP:";
+            this.lblMonsterHealthPoints.Visible = false;
+            // 
+            // lblMonsterArmor
+            // 
+            this.lblMonsterArmor.AutoSize = true;
+            this.lblMonsterArmor.Location = new System.Drawing.Point(331, 209);
+            this.lblMonsterArmor.Name = "lblMonsterArmor";
+            this.lblMonsterArmor.Size = new System.Drawing.Size(75, 13);
+            this.lblMonsterArmor.TabIndex = 16;
+            this.lblMonsterArmor.Text = "Monster Armor";
+            this.lblMonsterArmor.Visible = false;
+            // 
+            // lblValueMonsterHealthPoints
+            // 
+            this.lblValueMonsterHealthPoints.AutoSize = true;
+            this.lblValueMonsterHealthPoints.Location = new System.Drawing.Point(445, 143);
+            this.lblValueMonsterHealthPoints.Name = "lblValueMonsterHealthPoints";
+            this.lblValueMonsterHealthPoints.Size = new System.Drawing.Size(35, 13);
+            this.lblValueMonsterHealthPoints.TabIndex = 16;
+            this.lblValueMonsterHealthPoints.Text = "label6";
+            this.lblValueMonsterHealthPoints.Visible = false;
+            // 
+            // lblValueMonsterAttackDamage
+            // 
+            this.lblValueMonsterAttackDamage.AutoSize = true;
+            this.lblValueMonsterAttackDamage.Location = new System.Drawing.Point(445, 175);
+            this.lblValueMonsterAttackDamage.Name = "lblValueMonsterAttackDamage";
+            this.lblValueMonsterAttackDamage.Size = new System.Drawing.Size(35, 13);
+            this.lblValueMonsterAttackDamage.TabIndex = 16;
+            this.lblValueMonsterAttackDamage.Text = "label6";
+            this.lblValueMonsterAttackDamage.Visible = false;
+            // 
+            // lblValueMonsterArmor
+            // 
+            this.lblValueMonsterArmor.AutoSize = true;
+            this.lblValueMonsterArmor.Location = new System.Drawing.Point(445, 209);
+            this.lblValueMonsterArmor.Name = "lblValueMonsterArmor";
+            this.lblValueMonsterArmor.Size = new System.Drawing.Size(35, 13);
+            this.lblValueMonsterArmor.TabIndex = 16;
+            this.lblValueMonsterArmor.Text = "label6";
+            this.lblValueMonsterArmor.Visible = false;
+            // 
             // ClickAdventureBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 411);
+            this.Controls.Add(this.lblValueMonsterArmor);
+            this.Controls.Add(this.lblMonsterArmor);
+            this.Controls.Add(this.lblValueMonsterHealthPoints);
+            this.Controls.Add(this.lblMonsterHealthPoints);
+            this.Controls.Add(this.lblValueMonsterAttackDamage);
+            this.Controls.Add(this.lblMonsterDamage);
+            this.Controls.Add(this.lblMonsterDialogue);
             this.Controls.Add(this.combatLabel);
             this.Controls.Add(this.defendButton);
             this.Controls.Add(this.attackButton);
@@ -242,6 +326,13 @@
         private System.Windows.Forms.Button attackButton;
         private System.Windows.Forms.Button defendButton;
         private System.Windows.Forms.Label combatLabel;
+        private System.Windows.Forms.Label lblMonsterDialogue;
+        private System.Windows.Forms.Label lblMonsterDamage;
+        private System.Windows.Forms.Label lblMonsterHealthPoints;
+        private System.Windows.Forms.Label lblMonsterArmor;
+        private System.Windows.Forms.Label lblValueMonsterHealthPoints;
+        private System.Windows.Forms.Label lblValueMonsterAttackDamage;
+        private System.Windows.Forms.Label lblValueMonsterArmor;
     }
 }
 

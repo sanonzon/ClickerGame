@@ -67,6 +67,9 @@
     <EmbeddedResource Include="ClickAdventure.resx">
       <DependentUpon>ClickAdventure.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Logic\Quest.resx">
+      <DependentUpon>Quest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -12,6 +12,7 @@ namespace OOP.Logic
         public string questText;
         public string questName;
         public int questId;
+
         public static List<Quest> quests = new List<Quest>();
 
         public Quest()
@@ -51,7 +52,30 @@ namespace OOP.Logic
            
            
         }
-        
-        
+
+        private void InitializeComponent()
+        {
+           
+            // 
+            // Quest
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(719, 411);
+           
+            this.Name = "Quest";
+            this.Load += new System.EventHandler(this.Quest_Load);
+            this.Controls.SetChildIndex(this.lblWalk, 0);
+            
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        private void Quest_Load(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }

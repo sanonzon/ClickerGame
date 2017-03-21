@@ -55,13 +55,19 @@ namespace OOP.Logic
         {
             if(this.player.CurrentHitPoints > 0 && this.creature.HealthPoints <= 0)
             {
-                return "Congrats, you won.";
+                this.player.ExperienceHitPoints += this.creature.Experience;
+                return "Congrats, you won and gained " + this.creature.Experience + " experience.";
             }
             else if(this.player.CurrentHitPoints <= 0)
             {
                 return "You lost, ggwp.";
             }
             return ""; // Still going.
+        }
+
+        public Player.Player getPlayerStats()
+        {
+            return this.player;
         }
      // Doot - jora
     }

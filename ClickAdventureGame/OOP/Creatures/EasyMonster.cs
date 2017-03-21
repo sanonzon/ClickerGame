@@ -14,6 +14,7 @@ namespace OOP.Creatures
             AttackDamage = 6;
             Armor = 3;
             Dialog = "Dö noobjävel";
+            Experience = 75;
 
         }
     }

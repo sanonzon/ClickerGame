@@ -10,10 +10,11 @@ namespace OOP.Creatures
     {
         public Boss()
         {
-            HealthPoints= 200;
+            HealthPoints= 1000;
             AttackDamage = 20;
             Dialog = "BY FIRE, BE PURGED!";
             Armor = 10;
+            Experience = 50;
         }
     }
 }

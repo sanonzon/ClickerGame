@@ -31,6 +31,6 @@ namespace OOP.Creatures
             get;
             set;
         }
-
+        public int Experience { get; set; }
     }
 }

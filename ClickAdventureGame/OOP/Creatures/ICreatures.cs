@@ -31,5 +31,9 @@ namespace OOP.Creatures
             set;
         }
 
+        int Experience {
+            get;
+            set;
+        }
     }
 }

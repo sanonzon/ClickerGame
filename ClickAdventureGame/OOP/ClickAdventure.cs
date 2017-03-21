@@ -26,6 +26,7 @@ namespace OOP
         private Combat combatMode;
         private readonly int BONUS_ARMOR_CONSTANT = 2;
 
+
         public ClickAdventureBase()
 
         {
@@ -56,7 +57,6 @@ namespace OOP
                 + "This is how you play:" + "\n"
                 + "- Click" + "\n"
                 + "-  Win" ;
-            
 
 
         }
@@ -72,7 +72,7 @@ namespace OOP
             // questId;
 
             lblWalk.Text = "You moved to position: " + ++positionWalked;
-            Console.WriteLine(positionWalked);
+            //Console.WriteLine(positionWalked);
             //if (questHack < Quest.quests.Count)
             //{
             //    mainTextBox.Text = Quest.quests[questHack].questText;
@@ -81,17 +81,16 @@ namespace OOP
 
             if (positionWalked % 4 == 0)
                 {
-                    creature = new EasyMonster();
+                    creature = generateCreature();
                     combatMode = new Combat(creature, _player, BONUS_ARMOR_CONSTANT);
-                RenderEnemyText();
-                //UpdateLabels();
-                    
+                    RenderEnemyText();
+                                    
                     attackButton.Visible = true;            
                     defendButton.Visible = true;
                     
 
                 }
-                else
+            else
                 {
                     mainTextBox.Text = "";
                     attackButton.Visible = false;
@@ -99,23 +98,16 @@ namespace OOP
                 }
             }
 
-            
-
-        
-
-        
-        
 
 
         private void attackButton_Click(object sender, EventArgs e)
         {
             combatMode.Attack();
+            UpdateLabels();
 
             int damageTaken = creature.AttackDamage - _player.Armor > 0 ? creature.AttackDamage - _player.Armor : 0;
             int damageGiven = _player.AttackDamage - creature.Armor > 0 ? _player.AttackDamage - creature.Armor : 0;
-      
-            UpdateLabels();
-
+                  
             combatLabel.Text = "You smashed the monster for " + damageGiven.ToString() + "\n"
            + "The monster hit you for " + damageTaken.ToString();
 
@@ -124,10 +116,10 @@ namespace OOP
         private void defendButton_Click(object sender, EventArgs e)
         {
             combatMode.Defend();
-            int damageTaken = creature.AttackDamage - (_player.Armor + BONUS_ARMOR_CONSTANT) > 0 ? creature.AttackDamage - (_player.Armor + BONUS_ARMOR_CONSTANT) : 0;
-            int damageGiven = _player.AttackDamage - creature.Armor > 0 ? _player.AttackDamage - creature.Armor : 0;
-
             UpdateLabels();
+
+            int damageTaken = creature.AttackDamage - (_player.Armor + BONUS_ARMOR_CONSTANT) > 0 ? creature.AttackDamage - (_player.Armor + BONUS_ARMOR_CONSTANT) : 0;
+            int damageGiven = _player.AttackDamage - creature.Armor > 0 ? _player.AttackDamage - creature.Armor : 0;            
 
             combatLabel.Text = "You enter defensive stance against the monster\n"
            + "The monster hit you for " + damageTaken.ToString();
@@ -139,27 +131,83 @@ namespace OOP
             // SAKER
             lblHitPoints.Text = _player.CurrentHitPoints.ToString();
 
-            mainTextBox.Text = "You stumbled on a creature! Fight!" + "\n" + "\n" + "Monster HP: "
-                   + creature.HealthPoints.ToString() + "\n"
-                   + "Monster Armor: " + creature.Armor.ToString() + "\n"
-                   + "Monster Damage: " + creature.AttackDamage.ToString();
 
-           
+            lblValueMonsterHealthPoints.Text = creature.HealthPoints.ToString();
+            mainTextBox.Text = "";
+
             string combatString = combatMode.CheckVictory();
+            // Not empty string = either win or victory.
             if (!combatString.Equals(""))
             {
+                //             _player = combatMode.getPlayerStats();
+                CheckLevelUp();
                 mainTextBox.Text = combatString;
+                lblExperience.Text = _player.ExperienceHitPoints.ToString();
+                lblLevel.Text = _player.Level.ToString();
+                
+                
+
                 attackButton.Visible = false;
                 defendButton.Visible = false;
+
+                lblMonsterDialogue.Visible = false;
+                lblMonsterHealthPoints.Visible = false;
+                lblMonsterArmor.Visible = false;
+                lblMonsterDamage.Visible = false;
+                lblMonsterDialogue.Visible = false;
+                lblValueMonsterAttackDamage.Visible = false;
+                lblValueMonsterHealthPoints.Visible = false;
+                lblValueMonsterArmor.Visible = false;
             }
         }
 
         private void RenderEnemyText()
         {
-            mainTextBox.Text = "You stumbled on a creature! Fight!" + "\n" + "\n" + "Monster HP: "
-                   + creature.HealthPoints.ToString() + "\n"
-                   + "Monster Armor: " + creature.Armor.ToString() + "\n"
-                   + "Monster Damage: " + creature.AttackDamage.ToString();
+            lblMonsterDialogue.Text = "You've stumbled on a creature!\n" + creature.Dialog;
+            lblValueMonsterArmor.Text = creature.Armor.ToString();
+            lblValueMonsterAttackDamage.Text = creature.AttackDamage.ToString();
+            lblValueMonsterHealthPoints.Text = creature.HealthPoints.ToString();
+            lblMonsterDialogue.Visible = true;
+            lblMonsterHealthPoints.Visible = true;
+            lblMonsterArmor.Visible = true;
+            lblMonsterDamage.Visible = true;
+            lblMonsterDialogue.Visible = true;
+            lblValueMonsterAttackDamage.Visible = true;
+            lblValueMonsterHealthPoints.Visible = true;
+            lblValueMonsterArmor.Visible = true;
+        }
+
+        private void CheckLevelUp()
+        {
+            if(_player.ExperienceHitPoints >= 100)
+            {
+                mainTextBox.Text += " & you leveled up!";
+                while(_player.ExperienceHitPoints >= 100)
+                {
+                    Console.WriteLine("WHile leveling, xp: {0}", _player.ExperienceHitPoints);
+                    _player.Level += 1;
+                    _player.ExperienceHitPoints -= 100;
+                }
+            }            
+        }
+
+        private Creatures.Creatures generateCreature()
+        {
+            Random rnd = new Random();
+            Creatures.Creatures c;
+            int n = rnd.Next(0, 2); // 0 <= n, n < 2
+            switch (n)
+            {
+                case 0:
+                    c = new EasyMonster();
+                    break;
+                case 1:
+                    c = new Boss();
+                    break;
+                default:
+                    throw new Exception("Couldn't generate a monster, ");
+            }
+            return c;
         }
 
     }
