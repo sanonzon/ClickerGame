@@ -193,21 +193,18 @@ namespace OOP
 
         private Creatures.Creatures generateCreature()
         {
-            Random rnd = new Random();
-            Creatures.Creatures c;
-            int n = rnd.Next(0, 2); // 0 <= n, n < 2
-            switch (n)
+            Random rnd = new Random();            
+            int n = rnd.Next(0, 21); // Dice 20
+
+            Console.WriteLine("Generating monster, you rolled {0}", n);
+            if (n >= 18)
             {
-                case 0:
-                    c = new EasyMonster();
-                    break;
-                case 1:
-                    c = new Boss();
-                    break;
-                default:
-                    throw new Exception("Couldn't generate a monster, ");
+                return new Boss();
             }
-            return c;
+            else
+            {
+                return new EasyMonster();
+            }
         }
 
     }
